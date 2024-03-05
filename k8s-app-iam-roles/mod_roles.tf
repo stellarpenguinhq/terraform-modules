@@ -48,3 +48,19 @@ module "external_dns" {
   eks_cluster_oidc_issuer_url    = var.eks_cluster_oidc_issuer_url
   iam_role_prefix                = var.iam_role_prefix
 }
+
+################################################################################
+#
+# VPC CNI
+#
+################################################################################
+module "eks_addon_vpc_cni" {
+  source = "./modules/eks-addon-vpc-cni"
+  count  = var.eks_addon_vpc_cni.enabled ? 1 : 0
+
+  kubernetes_namespace           = var.eks_addon_vpc_cni.kubernetes_namespace
+  kubernetes_service_acount_name = var.eks_addon_vpc_cni.kubernetes_service_acount_name
+  eks_cluster_oidc_provider_arn  = var.eks_cluster_oidc_provider_arn
+  eks_cluster_oidc_issuer_url    = var.eks_cluster_oidc_issuer_url
+  iam_role_prefix                = var.iam_role_prefix
+}

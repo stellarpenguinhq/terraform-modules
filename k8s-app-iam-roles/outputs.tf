@@ -12,3 +12,8 @@ output "external_secrets_role_arn" {
   description = "IAM role ARN for external-secrets"
   value       = var.external_secrets.enabled ? module.external_secrets[0].role_arn : "not-enabled"
 }
+
+output "eks_addon_vpc_cni_role_arn" {
+  description = "IAM role ARN for eks-addon-vpc-cni"
+  value       = var.eks_addon_vpc_cni.enabled ? module.eks_addon_vpc_cni[0].role_arn : "not-enabled"
+}

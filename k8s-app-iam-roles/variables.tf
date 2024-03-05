@@ -48,5 +48,17 @@ variable "external_dns" {
   default = {
     enabled = false
   }
-
 }
+
+variable "eks_addon_vpc_cni" {
+  type = object({
+    enabled                        = bool
+    kubernetes_service_acount_name = optional(string, "aws-node")
+    kubernetes_namespace           = optional(string, "default")
+  })
+  default = {
+    enabled = false
+  }
+}
+
+
