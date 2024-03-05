@@ -33,7 +33,7 @@ variable "ssm_parameter_arns" {
   type        = list(string)
 }
 
-variable "secretsmanager_secrets_arns" {
+variable "secretsmanager_secret_arns" {
   description = "List of Secrets Manager Secret ARNs that the created role should have access to"
   type        = list(string)
 }

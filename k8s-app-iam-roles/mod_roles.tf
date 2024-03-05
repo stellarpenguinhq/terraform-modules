@@ -27,7 +27,7 @@ module "external_secrets" {
   kubernetes_service_acount_name = var.external_secrets.kubernetes_service_acount_name
   kms_key_arns                   = var.external_secrets.kms_key_arns
   ssm_parameter_arns             = var.external_secrets.ssm_parameter_arns
-  secretsmanager_secrets_arns    = var.external_secrets.secretsmanager_secrets_arns
+  secretsmanager_secret_arns     = var.external_secrets.secretsmanager_secret_arns
   eks_cluster_oidc_provider_arn  = var.eks_cluster_oidc_provider_arn
   eks_cluster_oidc_issuer_url    = var.eks_cluster_oidc_issuer_url
   iam_role_prefix                = var.iam_role_prefix

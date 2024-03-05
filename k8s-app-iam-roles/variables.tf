@@ -31,7 +31,7 @@ variable "external_secrets" {
     kubernetes_namespace           = optional(string, "default")
     ssm_parameter_arns             = optional(list(string), [])
     kms_key_arns                   = optional(list(string), [])
-    secretsmanager_secrets_arns    = optional(list(string), [])
+    secretsmanager_secret_arns     = optional(list(string), [])
   })
 
   default = {

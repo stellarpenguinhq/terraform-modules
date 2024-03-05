@@ -62,7 +62,7 @@ data "aws_iam_policy_document" "ssm_access" {
 data "aws_iam_policy_document" "secretsmanager_access" {
   statement {
 
-    resources = var.secretsmanager_secrets_arns
+    resources = var.secretsmanager_secret_arns
 
     actions = [
       "secretsmanager:GetSecretValue",
