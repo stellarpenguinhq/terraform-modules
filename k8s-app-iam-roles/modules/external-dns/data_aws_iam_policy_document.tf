@@ -25,10 +25,10 @@ data "aws_iam_policy_document" "trust" {
 
 ################################################################################
 #
-# External DNS permissions
+# External DNS Route53 permissions
 #
 ################################################################################
-data "aws_iam_policy_document" "default" {
+data "aws_iam_policy_document" "route53_access" {
 
   statement {
     resources = ["*"]
