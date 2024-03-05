@@ -34,11 +34,11 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_eks_cluster_oidc_issuer_url"></a> [eks\_cluster\_oidc\_issuer\_url](#input\_eks\_cluster\_oidc\_issuer\_url) | Issuer URL of the cluster's OIDC provider | `string` | n/a | yes |
 | <a name="input_eks_cluster_oidc_provider_arn"></a> [eks\_cluster\_oidc\_provider\_arn](#input\_eks\_cluster\_oidc\_provider\_arn) | ARN of the cluster's OIDC provider | `string` | n/a | yes |
-| <a name="input_iam_role_prefix"></a> [iam\_role\_prefix](#input\_iam\_role\_prefix) | Prefix for generated IAM role name - will be appended with '-aws-load-balancer-controller' | `string` | n/a | yes |
+| <a name="input_iam_role_prefix"></a> [iam\_role\_prefix](#input\_iam\_role\_prefix) | Prefix for generated IAM role name - will be appended with '-external-secrets' | `string` | n/a | yes |
 | <a name="input_kms_key_arns"></a> [kms\_key\_arns](#input\_kms\_key\_arns) | List of KMS keys that the created role should have access to | `list(string)` | n/a | yes |
-| <a name="input_kubernetes_namespace"></a> [kubernetes\_namespace](#input\_kubernetes\_namespace) | The namespace where the AWS Load Balancer Controller pods are deployed | `string` | n/a | yes |
-| <a name="input_kubernetes_service_acount_name"></a> [kubernetes\_service\_acount\_name](#input\_kubernetes\_service\_acount\_name) | The name of the service account attached to the AWS Load Balancer Controller deployment | `string` | n/a | yes |
-| <a name="input_secretsmanager_secrets_arns"></a> [secretsmanager\_secrets\_arns](#input\_secretsmanager\_secrets\_arns) | List of Secrets Manager Secret ARNs that the created role should have access to | `list(string)` | n/a | yes |
+| <a name="input_kubernetes_namespace"></a> [kubernetes\_namespace](#input\_kubernetes\_namespace) | The namespace where the External Secrets pods are deployed | `string` | n/a | yes |
+| <a name="input_kubernetes_service_acount_name"></a> [kubernetes\_service\_acount\_name](#input\_kubernetes\_service\_acount\_name) | The name of the service account attached to the External Secrets deployment | `string` | n/a | yes |
+| <a name="input_secretsmanager_secret_arns"></a> [secretsmanager\_secret\_arns](#input\_secretsmanager\_secret\_arns) | List of Secrets Manager Secret ARNs that the created role should have access to | `list(string)` | n/a | yes |
 | <a name="input_ssm_parameter_arns"></a> [ssm\_parameter\_arns](#input\_ssm\_parameter\_arns) | List of SSM Parameter ARNs that the created role should have access to | `list(string)` | n/a | yes |
 
 ## Outputs

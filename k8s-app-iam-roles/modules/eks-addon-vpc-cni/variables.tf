@@ -9,16 +9,17 @@ variable "eks_cluster_oidc_issuer_url" {
 }
 
 variable "kubernetes_namespace" {
-  description = "The namespace where the External DNS pods are deployed"
+  description = "The namespace where the AWS VPC CNI pods are deployed"
   type        = string
 }
 
 variable "kubernetes_service_acount_name" {
-  description = "The name of the service account attached to the External DNS deployment"
+  description = "The name of the service account attached to the AWS VPC CNI daemonset"
   type        = string
 }
 
 variable "iam_role_prefix" {
-  description = "Prefix for generated IAM role name - will be appended with '-external-dns'"
+  description = "Prefix for generated IAM role name - will be appended with '-aws-vpc-cni'"
   type        = string
 }
+
