@@ -64,3 +64,20 @@ module "eks_addon_vpc_cni" {
   eks_cluster_oidc_issuer_url    = var.eks_cluster_oidc_issuer_url
   iam_role_prefix                = var.iam_role_prefix
 }
+
+################################################################################
+#
+# EKS IAM Operator
+#
+################################################################################
+module "eks_iam_operator" {
+  source = "./modules/eks-iam-operator"
+  count  = var.eks_iam_operator.enabled ? 1 : 0
+
+  kubernetes_namespace           = var.eks_iam_operator.kubernetes_namespace
+  kubernetes_service_acount_name = var.eks_iam_operator.kubernetes_service_acount_name
+  eks_cluster_oidc_provider_arn  = var.eks_cluster_oidc_provider_arn
+  eks_cluster_oidc_issuer_url    = var.eks_cluster_oidc_issuer_url
+  iam_role_prefix                = var.iam_role_prefix
+  controlled_roles_iam_prefix    = var.eks_iam_operator.controlled_roles_iam_prefix
+}
