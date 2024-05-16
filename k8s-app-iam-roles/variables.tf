@@ -64,7 +64,7 @@ variable "eks_addon_vpc_cni" {
 variable "eks_iam_operator" {
   type = object({
     enabled                        = bool
-    kubernetes_service_acount_name = optional(string, "aws-node")
+    kubernetes_service_acount_name = optional(string, "eks-iam-operator")
     kubernetes_namespace           = optional(string, "default")
     controlled_roles_iam_prefix    = optional(string, "")
   })
