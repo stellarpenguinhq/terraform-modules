@@ -73,4 +73,14 @@ variable "eks_iam_operator" {
   }
 }
 
-
+variable "ack_iam_controller" {
+  type = object({
+    enabled                        = bool
+    kubernetes_service_acount_name = optional(string, "eks-iam-operator")
+    kubernetes_namespace           = optional(string, "default")
+    controlled_roles_iam_prefix    = optional(string, "")
+  })
+  default = {
+    enabled = false
+  }
+}
