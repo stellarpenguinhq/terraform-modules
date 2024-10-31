@@ -91,10 +91,10 @@ module "ack_iam_controller" {
   source = "./modules/ack-iam-controller"
   count  = var.ack_iam_controller.enabled ? 1 : 0
 
-  kubernetes_namespace           = var.eks_iam_operator.kubernetes_namespace
-  kubernetes_service_acount_name = var.eks_iam_operator.kubernetes_service_acount_name
+  kubernetes_namespace           = var.ack_iam_controller.kubernetes_namespace
+  kubernetes_service_acount_name = var.ack_iam_controller.kubernetes_service_acount_name
   eks_cluster_oidc_provider_arn  = var.eks_cluster_oidc_provider_arn
   eks_cluster_oidc_issuer_url    = var.eks_cluster_oidc_issuer_url
   iam_role_prefix                = var.iam_role_prefix
-  controlled_roles_iam_prefix    = var.eks_iam_operator.controlled_roles_iam_prefix
+  controlled_roles_iam_prefix    = var.ack_iam_controller.controlled_roles_iam_prefix
 }
