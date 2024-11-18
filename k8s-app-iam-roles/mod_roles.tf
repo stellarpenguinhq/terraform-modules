@@ -108,8 +108,8 @@ module "eks_addon_ebs_csi" {
   source = "./modules/eks-addon-ebs-csi"
   count  = var.eks_addon_ebs_csi.enabled ? 1 : 0
 
-  kubernetes_namespace           = var.eks_addon_vpc_cni.kubernetes_namespace
-  kubernetes_service_acount_name = var.eks_addon_vpc_cni.kubernetes_service_acount_name
+  kubernetes_namespace           = var.eks_addon_ebs_csi.kubernetes_namespace
+  kubernetes_service_acount_name = var.eks_addon_ebs_csi.kubernetes_service_acount_name
   eks_cluster_oidc_provider_arn  = var.eks_cluster_oidc_provider_arn
   eks_cluster_oidc_issuer_url    = var.eks_cluster_oidc_issuer_url
   iam_role_prefix                = var.iam_role_prefix
