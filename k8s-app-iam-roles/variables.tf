@@ -88,7 +88,7 @@ variable "ack_iam_controller" {
 variable "eks_addon_ebs_csi" {
   type = object({
     enabled                        = bool
-    kubernetes_service_acount_name = optional(string, "aws-node")
+    kubernetes_service_acount_name = optional(string, "ebs-csi-controller-sa")
     kubernetes_namespace           = optional(string, "default")
   })
   default = {
