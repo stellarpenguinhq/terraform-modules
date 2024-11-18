@@ -22,3 +22,8 @@ output "eks_iam_operator_role_arn" {
   description = "IAM role ARN for eks-iam-operator"
   value       = var.eks_addon_vpc_cni.enabled ? module.eks_addon_vpc_cni[0].role_arn : "not-enabled"
 }
+
+output "eks_addon_ebs_csi_role_arn" {
+  description = "IAM role ARN for eks-addon-ebs-csi"
+  value       = var.eks_addon_ebs_csi.enabled ? module.eks_addon_ebs_csi[0].role_arn : "not-enabled"
+}
