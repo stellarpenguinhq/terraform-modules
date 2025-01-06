@@ -52,6 +52,19 @@ data "aws_iam_policy_document" "ssm_access" {
     ]
   }
 
+  dynamic "statement" {
+    for_each = var.allow_secrets_write ? [0] : []
+    content {
+      resources = var.ssm_parameter_arns
+
+      actions = [
+        "ssm:AddTagsToResource",
+        "ssm:ListTagsForResource",
+        "ssm:PutParameter",
+        "ssm:PutParameters",
+      ]
+    }
+  }
 }
 
 ################################################################################
@@ -65,8 +78,38 @@ data "aws_iam_policy_document" "secretsmanager_access" {
     resources = var.secretsmanager_secret_arns
 
     actions = [
-      "secretsmanager:GetSecretValue",
+      "secretsmanager:BatchGetSecretValue",
       "secretsmanager:DescribeSecret",
+      "secretsmanager:GetResourcePolicy",
+      "secretsmanager:GetSecretValue",
+      "secretsmanager:ListSecretVersionIds",
     ]
+  }
+
+
+  dynamic "statement" {
+    for_each = var.allow_secrets_write ? [0] : []
+    content {
+      resources = var.secretsmanager_secret_arns
+
+      actions = [
+        "secretsmanager:CreateSecret",
+        "secretsmanager:PutSecretValue",
+        "secretsmanager:TagResource",
+      ]
+    }
+  }
+
+  dynamic "statement" {
+    for_each = var.allow_secrets_write ? [0] : []
+    content {
+      resources = var.secretsmanager_secret_arns
+      actions   = ["secretsmanager:DeleteSecret"]
+      condition {
+        test     = "StringEquals"
+        variable = "secretsmanager:ResourceTag/managed-by"
+        values   = ["external-secrets"]
+      }
+    }
   }
 }

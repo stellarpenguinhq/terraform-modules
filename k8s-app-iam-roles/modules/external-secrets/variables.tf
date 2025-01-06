@@ -1,3 +1,9 @@
+variable "allow_secrets_write" {
+  type        = bool
+  description = "Allow the writing (and deletion) of secrets in secrets manager and parameter store"
+  default     = false
+}
+
 variable "eks_cluster_oidc_provider_arn" {
   description = "ARN of the cluster's OIDC provider"
   type        = string

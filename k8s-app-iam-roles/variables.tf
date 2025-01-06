@@ -27,6 +27,7 @@ variable "aws_load_balancer_controller" {
 variable "external_secrets" {
   type = object({
     enabled                        = bool
+    allow_secrets_write            = optional(bool, false)
     kubernetes_service_acount_name = optional(string, "external-secrets")
     kubernetes_namespace           = optional(string, "default")
     ssm_parameter_arns             = optional(list(string), [])
