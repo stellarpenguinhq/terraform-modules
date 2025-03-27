@@ -34,7 +34,6 @@ data "aws_iam_policy_document" "trust" {
 ################################################################################
 data "aws_iam_policy_document" "default" {
   statement {
-    sid       = ""
     effect    = "Allow"
     resources = ["*"]
     actions   = ["iam:CreateServiceLinkedRole"]
@@ -47,7 +46,6 @@ data "aws_iam_policy_document" "default" {
   }
 
   statement {
-    sid       = ""
     effect    = "Allow"
     resources = ["*"]
 
@@ -65,9 +63,10 @@ data "aws_iam_policy_document" "default" {
       "ec2:DescribeTags",
       "ec2:GetCoipPoolUsage",
       "ec2:DescribeCoipPools",
+      "ec2:GetSecurityGroupsForVpc",
+      "ec2:DescribeIpamPools",
       "elasticloadbalancing:DescribeLoadBalancers",
       "elasticloadbalancing:DescribeLoadBalancerAttributes",
-      "elasticloadbalancing:DescribeListenerAttributes",
       "elasticloadbalancing:DescribeListeners",
       "elasticloadbalancing:DescribeListenerCertificates",
       "elasticloadbalancing:DescribeSSLPolicies",
@@ -76,11 +75,13 @@ data "aws_iam_policy_document" "default" {
       "elasticloadbalancing:DescribeTargetGroupAttributes",
       "elasticloadbalancing:DescribeTargetHealth",
       "elasticloadbalancing:DescribeTags",
+      "elasticloadbalancing:DescribeTrustStores",
+      "elasticloadbalancing:DescribeListenerAttributes",
+      "elasticloadbalancing:DescribeCapacityReservation",
     ]
   }
 
   statement {
-    sid       = ""
     effect    = "Allow"
     resources = ["*"]
 
@@ -106,7 +107,6 @@ data "aws_iam_policy_document" "default" {
   }
 
   statement {
-    sid       = ""
     effect    = "Allow"
     resources = ["*"]
 
@@ -117,14 +117,12 @@ data "aws_iam_policy_document" "default" {
   }
 
   statement {
-    sid       = ""
     effect    = "Allow"
     resources = ["*"]
     actions   = ["ec2:CreateSecurityGroup"]
   }
 
   statement {
-    sid       = ""
     effect    = "Allow"
     resources = ["arn:aws:ec2:*:*:security-group/*"]
     actions   = ["ec2:CreateTags"]
@@ -143,7 +141,6 @@ data "aws_iam_policy_document" "default" {
   }
 
   statement {
-    sid       = ""
     effect    = "Allow"
     resources = ["arn:aws:ec2:*:*:security-group/*"]
 
@@ -154,19 +151,18 @@ data "aws_iam_policy_document" "default" {
 
     condition {
       test     = "Null"
-      variable = "aws:RequestTag/elbv2.k8s.aws/cluster"
-      values   = ["true"]
+      variable = "aws:ResourceTag/elbv2.k8s.aws/cluster"
+      values   = ["false"]
     }
 
     condition {
       test     = "Null"
-      variable = "aws:ResourceTag/elbv2.k8s.aws/cluster"
-      values   = ["false"]
+      variable = "aws:RequestTag/elbv2.k8s.aws/cluster"
+      values   = ["true"]
     }
   }
 
   statement {
-    sid       = ""
     effect    = "Allow"
     resources = ["*"]
 
@@ -184,7 +180,6 @@ data "aws_iam_policy_document" "default" {
   }
 
   statement {
-    sid       = ""
     effect    = "Allow"
     resources = ["*"]
 
@@ -201,7 +196,6 @@ data "aws_iam_policy_document" "default" {
   }
 
   statement {
-    sid       = ""
     effect    = "Allow"
     resources = ["*"]
 
@@ -214,7 +208,6 @@ data "aws_iam_policy_document" "default" {
   }
 
   statement {
-    sid    = ""
     effect = "Allow"
 
     resources = [
@@ -242,7 +235,6 @@ data "aws_iam_policy_document" "default" {
   }
 
   statement {
-    sid    = ""
     effect = "Allow"
 
     resources = [
@@ -259,7 +251,6 @@ data "aws_iam_policy_document" "default" {
   }
 
   statement {
-    sid       = ""
     effect    = "Allow"
     resources = ["*"]
 
@@ -272,6 +263,9 @@ data "aws_iam_policy_document" "default" {
       "elasticloadbalancing:ModifyTargetGroup",
       "elasticloadbalancing:ModifyTargetGroupAttributes",
       "elasticloadbalancing:DeleteTargetGroup",
+      "elasticloadbalancing:ModifyListenerAttributes",
+      "elasticloadbalancing:ModifyCapacityReservation",
+      "elasticloadbalancing:ModifyIpPools",
     ]
 
     condition {
@@ -282,7 +276,6 @@ data "aws_iam_policy_document" "default" {
   }
 
   statement {
-    sid    = ""
     effect = "Allow"
 
     resources = [
@@ -311,7 +304,6 @@ data "aws_iam_policy_document" "default" {
   }
 
   statement {
-    sid       = ""
     effect    = "Allow"
     resources = ["arn:aws:elasticloadbalancing:*:*:targetgroup/*/*"]
 
@@ -322,7 +314,6 @@ data "aws_iam_policy_document" "default" {
   }
 
   statement {
-    sid       = ""
     effect    = "Allow"
     resources = ["*"]
 
@@ -332,8 +323,7 @@ data "aws_iam_policy_document" "default" {
       "elasticloadbalancing:AddListenerCertificates",
       "elasticloadbalancing:RemoveListenerCertificates",
       "elasticloadbalancing:ModifyRule",
+      "elasticloadbalancing:SetRulePriorities",
     ]
   }
 }
-
-
