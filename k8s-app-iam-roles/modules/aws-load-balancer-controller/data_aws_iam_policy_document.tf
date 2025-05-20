@@ -65,6 +65,7 @@ data "aws_iam_policy_document" "default" {
       "ec2:DescribeCoipPools",
       "ec2:GetSecurityGroupsForVpc",
       "ec2:DescribeIpamPools",
+      "ec2:DescribeRouteTables",
       "elasticloadbalancing:DescribeLoadBalancers",
       "elasticloadbalancing:DescribeLoadBalancerAttributes",
       "elasticloadbalancing:DescribeListeners",
@@ -151,14 +152,14 @@ data "aws_iam_policy_document" "default" {
 
     condition {
       test     = "Null"
-      variable = "aws:ResourceTag/elbv2.k8s.aws/cluster"
-      values   = ["false"]
+      variable = "aws:RequestTag/elbv2.k8s.aws/cluster"
+      values   = ["true"]
     }
 
     condition {
       test     = "Null"
-      variable = "aws:RequestTag/elbv2.k8s.aws/cluster"
-      values   = ["true"]
+      variable = "aws:ResourceTag/elbv2.k8s.aws/cluster"
+      values   = ["false"]
     }
   }
 
@@ -223,14 +224,14 @@ data "aws_iam_policy_document" "default" {
 
     condition {
       test     = "Null"
-      variable = "aws:RequestTag/elbv2.k8s.aws/cluster"
-      values   = ["true"]
+      variable = "aws:ResourceTag/elbv2.k8s.aws/cluster"
+      values   = ["false"]
     }
 
     condition {
       test     = "Null"
-      variable = "aws:ResourceTag/elbv2.k8s.aws/cluster"
-      values   = ["false"]
+      variable = "aws:RequestTag/elbv2.k8s.aws/cluster"
+      values   = ["true"]
     }
   }
 
