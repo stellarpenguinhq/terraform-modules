@@ -16,7 +16,7 @@
 
 | Name | Source | Version |
 | ---- | ------ | ------- |
-| <a name="module_eks_role"></a> [eks\_role](#module\_eks\_role) | git@github.com:stellarpenguin/terraform-modules.giy//eks-role.git | v2.0.4 |
+| <a name="module_eks_role"></a> [eks\_role](#module\_eks\_role) | git@github.com:stellarpenguinhq/terraform-modules.giy//eks-role.git | v2.0.4 |
 
 ## Resources
 
