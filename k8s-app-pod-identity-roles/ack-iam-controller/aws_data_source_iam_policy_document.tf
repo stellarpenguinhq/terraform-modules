@@ -6,7 +6,8 @@
 data "aws_iam_policy_document" "iam_access" {
 
   statement {
-    resources = ["arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/ack-${var.cluster_name}-${data.aws_region.current.region}-*"]
+    resources = ["arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/${var.controlled_roles_iam_prefix}*"]
+
     actions = [
       "iam:GetGroup",
       "iam:CreateGroup",

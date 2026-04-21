@@ -17,3 +17,8 @@ variable "service_account_namespace" {
   description = "Namespace of the service account used in the cluster to assume this IAM role"
   type        = string
 }
+
+variable "controlled_roles_iam_prefix" {
+  description = "The operator is allowed to manage IAM roles with this prefix"
+  type        = string
+}

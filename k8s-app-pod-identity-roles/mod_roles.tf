@@ -34,10 +34,11 @@ module "ack_iam_controller" {
   source = "./ack-iam-controller"
   count  = var.ack_iam_controller.enabled ? 1 : 0
 
-  cluster_name              = var.cluster_name
-  role_name                 = var.ack_iam_controller.role_name
-  service_account_name      = var.ack_iam_controller.service_account_name
-  service_account_namespace = var.ack_iam_controller.service_account_namespace
+  cluster_name                = var.cluster_name
+  role_name                   = var.ack_iam_controller.role_name
+  service_account_name        = var.ack_iam_controller.service_account_name
+  service_account_namespace   = var.ack_iam_controller.service_account_namespace
+  controlled_roles_iam_prefix = var.ack_iam_controller.controlled_roles_iam_prefix
 }
 
 module "aws_vpc_cni" {

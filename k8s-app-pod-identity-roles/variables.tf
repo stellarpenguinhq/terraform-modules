@@ -38,10 +38,11 @@ variable "aws_load_balancer_controller" {
 variable "ack_iam_controller" {
   description = "Config for the ack-iam-controller pod identity role. Pass only the keys you want to override (e.g. service_account_name = \"foo\")."
   type = object({
-    enabled                   = bool
-    role_name                 = optional(string, "ack-iam-controller")
-    service_account_name      = optional(string, "ack-iam-controller")
-    service_account_namespace = optional(string, "default")
+    enabled                     = bool
+    controlled_roles_iam_prefix = string
+    role_name                   = optional(string, "ack-iam-controller")
+    service_account_name        = optional(string, "ack-iam-controller")
+    service_account_namespace   = optional(string, "default")
   })
 }
 
