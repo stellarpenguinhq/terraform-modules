@@ -21,7 +21,7 @@ module "eks_role" {
 # EKS Role: EFS CSI (EKS AddOn)
 #
 ###############################################################################
-module "eks_role" {
+module "eks_role_node" {
   source                    = "git@github.com:stellarpenguinhq/terraform-modules.git//eks-role?ref=eks-role-v1.0.0"
   cluster_name              = var.cluster_name
   role_name                 = "${var.role_name}-node"
